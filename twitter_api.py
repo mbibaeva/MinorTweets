@@ -1,9 +1,13 @@
 import tweepy
 import re
-import configparser
+import yaml
+
+with open("config.yml", 'r') as ymlfile:
+    cfg = yaml.load(ymlfile)
 
 # Authenticate to Twitter
-
+auth = tweepy.OAuthHandler(cfg['consumer']['key'], cfg['consumer']['secret'])
+auth.set_access_token(cfg['access']['token'], cfg['access']['secret'])
 api = tweepy.API(auth)
 
 try:
@@ -54,4 +58,5 @@ print(tatar_res[0].user.screen_name)
 print(tatar_res[3].id_str)
 print(tatar_res[3].user.screen_name)
 
-url = 'https://twitter.com/' + str(name) + '/status/' + tweet_id
+url = 'https://twitter.com/' + str(tweet.name) + '/status/' + tweet.id_str
+

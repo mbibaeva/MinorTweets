@@ -1,0 +1,59 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Демо navmenu с эффектом slide</title>
+    <!-- Bootstrap -->
+    <link href="/examples/vendors/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/demo/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            padding: 50px 0 0 0;
+        }
+
+        .navmenu {
+            padding-top: 50px;
+        }
+
+        .navbar {
+            display: block;
+            text-align: center;
+        }
+        .navbar-brand {
+            display: inline-block;
+            float: none;
+        }
+        .navbar-toggle {
+            position: absolute;
+            float: left;
+            margin-left: 15px;
+        }
+
+        .container {
+            max-width: 100%;
+        }
+
+        @media (min-width: 1px) {
+            .navbar-toggle {
+                display: block !important;
+            }
+        }
+
+        @media (min-width: 992px) {
+            body {
+                padding: 0 0 0 300px;
+            }
+            .navmenu {
+                padding-top: 0;
+            }
+            .navbar {
+                display: none !important; /* IE8 fix */
+            }
+        }
+        .navmenu-nav.dropdown-menu { position:relative; }
+        .dropdown-backdrop { position: static; }
+    </style>
+</head>
