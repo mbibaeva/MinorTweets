@@ -37,26 +37,33 @@ def clean_urls(text):
     text = re.sub("http(s)://(\S)+", "", text)
     return text
 
-def collect_tweets(api, place, letters):
+def collect_tweets(api, place, letters, last_created=None):
     saved_texts = []
     result = []
     print("search started")
     for l in letters:
-        tweets = api.search(q=l, geocode=place, count=200)
+        if last_created:
+            tweets = api.search(q=l, geocode=place, count=200, since_id=last_created)
+        else:
+            tweets = api.search(q=l, geocode=place, count=200)
         for tweet in tweets:
             clean = clean_urls(tweet.text)
             if clean not in saved_texts:
                 result.append(tweet)
                 saved_texts.append(clean)
-    print("saved tweets are ", str(len(saved_texts)))
     return result
 
-tatar_res = collect_tweets(api, coords["tatar"], letters["tatar"])
-print(len(tatar_res))
-print(tatar_res[0].id_str)
-print(tatar_res[0].user.screen_name)
-print(tatar_res[3].id_str)
-print(tatar_res[3].user.screen_name)
+def make_blockquote(tweet):
+    url = 'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str
+    bq_tag =    ('<blockquote class="twitter-tweet"><p dir="ltr">' + tweet.text + '</p>&mdash; ' +  tweet.user.name + 
+                '(@' + tweet.user.screen_name + ') <a href="' + url + '">' + str(tweet.created_at) + 
+                '</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>')
+    return bq_tag
 
-url = 'https://twitter.com/' + str(tweet.name) + '/status/' + tweet.id_str
+def display_tweets(tweets):
+    blockquotes = []
+    for tweet in tweets:  
+        blockquotes.append(make_blockquote(tweet))
+    return blockquotes
+
 
