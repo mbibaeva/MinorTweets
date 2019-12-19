@@ -16,14 +16,14 @@ app = Flask(__name__)
 #def index():
 #    return render_template('index.html')
 
-@app.route('/', methods = ['post', 'get'])
+@app.route('/', methods = ['get'])
 def main():
     return render_template('main.html')
 
 
 
 @app.route('/tatar', methods = ['post', 'get'])
-def display_tatar(language):
+def display_tatar():
     #df = pd.read_csv('all_data.csv', sep=';').fillna('')
     #names = tools.display_all()
 

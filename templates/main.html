@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 {% include "head.html" %}
 <body>
-{% include "panel.html" %}
+  <div class="container-fluid">
+    <div class="row">
+      {% include "panel.html" %}
+        <div class="col-md-8 col-lg-9 content-container" style="background-color: #87cdf8">
+            <h1 class="h3 text-center mt-5">Сбор твитов по локации</h1>
+            <h2 class="lead text-center">проект по препроцессингу</h2>
+            <hr class="mb-5">
 
-<div class="container">
-    <div class="page-header">
-        <h1>Еженедельная коллекция твитов</h1>
+            <section >
+                <p style="height: 5000px;">Сервис микроблогов <a href="https://twitter.com">Twitter</a></p>
+            </section>
+        </div>
     </div>
-    <p>Малые языки - это важно</p>
-</div>
-{% include "scripts.html" %}
+  </div>
 </body>
 </html>
