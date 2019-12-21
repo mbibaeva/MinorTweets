@@ -60,9 +60,9 @@ def collect_tweets(api, place, letters, last_created=None):
     print("search started")
     for l in letters:
         if last_created:
-            tweets = api.search(q=l, geocode=place, count=200, since_id=last_created)
+            tweets = api.search(q=l, geocode=place, count=1000, since_id=last_created)
         else:
-            tweets = api.search(q=l, geocode=place, count=200)
+            tweets = api.search(q=l, geocode=place, count=1000)
         for tweet in tweets:
             clean = clean_urls(tweet.text)
             if clean not in saved_texts:
