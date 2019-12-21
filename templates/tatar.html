@@ -2,18 +2,41 @@
 <html lang="en">
 {% include "head.html" %}
 <body>
-{% include "panel.html" %}
-
-<div class="container">
-    <div class="page-header">
-        <h1>Татарские твиты</h1>
-    </div>	
-    <div>
-    {% for bq in tweets %}
-    	<div>{{ bq }}</div>
-    {% endfor %}
-    </div>
+  <div class="container-fluid">
+    <div class="row">
+	{% include "panel.html" %}
+	<div class="col-md-8 col-lg-9 content-container" style="background-color: #b6daf0">
+        <h1 class="h3 text-center mt-5">Твиты из Татарстана</h1>
+        <h2 class="lead text-center">за последнюю неделю</h2>
+        <hr class="mb-5">
+        <div class="row">
+	        <form method="post" style="margin-left: 100px; margin-bottom: 15px;">
+		        <input type="submit" name="submit_button" value="Обновить твиты">
+		    </form>
+		    <h2 class="lead text-right" style="margin-left:850px">{{ speakers }} носителей</h2>
+		</div>	
+        <div style="margin-left: 150px; margin-right: 100px;">
+        {% if tweets|length > 0 %}
+        	{% if news == 2 %}
+				<h2 class="lead text-center">Новые твиты!</h2>
+			{% elif news == 1 %}
+				<h2 class="lead text-center">Ничего нового</h2>
+			{% endif %}
+        	<div class="row">
+		    {% for tweet in tweets %}
+			    <blockquote class="twitter-tweet"><p dir="ltr">{{ tweet[0] }}</p>&mdash; {{ tweet[1] }} <a href={{ tweet[2]}}>{{ tweet[3] }}</a></blockquote>
+		    {% endfor %}
+		    <div class="row">
+		{% else %}
+			<h2 class="lead text-center">В последнее время не было замечено ни одного твита на татарском языке вокруг Казани</h2>
+			{% if news == 1 %}
+				<h2 class="lead text-center">Ничего не изменилось</h2>
+			{% endif %}
+		{% endif %}
+		</div>
+	</div>
+	<script async src="/static/js/widgets.js" charset="utf-8"></script>
 </div>
-{% include "scripts.html"}
+</div>
 </body>
 </html>

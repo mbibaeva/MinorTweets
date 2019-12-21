@@ -6,14 +6,14 @@
     <div class="row">
 	{% include "panel.html" %}
 	<div class="col-md-8 col-lg-9 content-container" style="background-color: #b6daf0">
-        <h1 class="h3 text-center mt-5">Твиты из Марий Эл</h1>
+        <h1 class="h3 text-center mt-5">Твиты из Башкирии</h1>
         <h2 class="lead text-center">за последнюю неделю</h2>
         <hr class="mb-5">
         <div class="row">
 	        <form method="post" style="margin-left: 100px; margin-bottom: 15px;">
 		        <input type="submit" name="submit_button" value="Обновить твиты">
 		    </form>
-		   	<h2 class="lead text-right" style="margin-left:850px">{{ speakers }} носителей</h2>
+		    <h2 class="lead text-right" style="margin-left:850px">{{ speakers }} носителей</h2>
 		</div>	
         <div style="margin-left: 150px; margin-right: 100px;">
         {% if tweets|length > 0 %}
@@ -28,7 +28,7 @@
 		    {% endfor %}
 		    <div class="row">
 		{% else %}
-			<h2 class="lead text-center">В последнее время не было замечено ни одного твита на марийских языках вокруг Йошкар-Олы и Козьмодемьянска</h2>
+			<h2 class="lead text-center">В последнее время не было замечено ни одного твита на башкирском языке вокруг Уфы</h2>
 			{% if news == 1 %}
 				<h2 class="lead text-center">Ничего не изменилось</h2>
 			{% endif %}
